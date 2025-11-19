@@ -1,6 +1,94 @@
 body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    text-align: center;
+    background: linear-gradient(135deg, #dbe8e8, #f2f8f8); /* light teal-tinted background */
     color: #333;
 }
+
+/* Frosted glass container */
+.container {
+    width: 90%;
+    max-width: 460px;
+    padding: 35px 28px;
+
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 22px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+
+    text-align: center;
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #197278; /* NEW THEME COLOR */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    color: #197278; /* NEW THEME COLOR */
+}
+
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px;
+    font-size: 17px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+
+    background: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    margin-top: 12px;
+    padding: 14px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    background: #197278; /* NEW THEME COLOR */
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: #12595c; /* Slightly darker teal */
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 90px;      /* adjust size as needed */
+    height: auto;
+    opacity: 0.9;
+}
+
