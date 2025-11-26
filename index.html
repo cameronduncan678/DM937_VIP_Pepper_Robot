@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepper Robot Interface</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+    <img src="static/images/logo.png" class="logo" alt="Logo">
+    <div class="container">
+        <h1>Pepper Web Interface</h1>
+
+        <form id="user-form">
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" name="name" placeholder="Your name..." required>
+
+            <label for="allergy">Select an allergy:</label>
+            <select id="allergy" name="allergy" required onchange="toggleOtherInput()">
+                <option value="" disabled selected>Select an allergy</option>
+                <option>Milk (Dairy)</option>
+                <option>Eggs</option>
+                <option>Peanuts</option>
+                <option>Tree Nuts</option>
+                <option>Soy</option>
+                <option>Wheat</option>
+                <option>Fish</option>
+                <option>Shellfish</option>
+                <option>Sesame</option>
+                <option>Mustard</option>
+                <option>Celery</option>
+                <option>Lupin</option>
+                <option>Sulfites</option>
+                <option>Corn</option>
+                <option value="other">Other</option>
+            </select>
+
+            <div id="other-box" style="display:none;">
+                <label for="other_allergy">Please specify:</label>
+                <input type="text" id="other_allergy" name="other_allergy" placeholder="Enter allergy...">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleOtherInput() {
+            let allergy = document.getElementById("allergy").value;
+            let otherBox = document.getElementById("other-box");
+            otherBox.style.display = allergy === "other" ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
