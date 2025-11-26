@@ -18,9 +18,14 @@ def create_app(config=None):
     def index():
         return render_template('index.html')
 
+    from flask import request  # make sure this is at the top
+
     @app.route('/product')
     def product_page():
-        return render_template('product.html')
+        name = request.args.get("name", "there")
+        allergy = request.args.get("allergy", "")
+        return render_template('product.html', name=name, allergy=allergy)
+
 
     @app.route('/api/products', methods=['GET'])
     def api_products():

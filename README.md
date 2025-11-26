@@ -30,6 +30,7 @@ This project creates a lightweight website that Pepper can display on its tablet
 pepper_web_interface/
 │
 ├── app.py # Flask server
+├── barcode.py
 ├── requirements.txt # Python dependencies
 │
 ├── static/ # Frontend assets
@@ -38,6 +39,7 @@ pepper_web_interface/
 │ └── images/
 │
 └── templates/ # HTML pages
-└── index.html
+  └── index.html
+  └── product.html
 ```
 
