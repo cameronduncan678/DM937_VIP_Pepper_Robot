@@ -38,7 +38,7 @@ def main(session, exploration_file):
     navigation_service.startLocalization()
 
     # Navigate to another place in the map
-    # from helpers import search_product_by_name
+    # from helper import search_product_by_name
     # coords = search_product_by_name("Bread")
     # navigation_service.navigateToInMap(coords)
 
