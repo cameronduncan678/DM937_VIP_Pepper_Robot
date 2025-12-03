@@ -19,13 +19,13 @@ def main(session, x, y, z):
     #motion.wakeUp()
 
     # Set the linear velocity for Pepper to move forward
-    linear_velocity = 0.5  # Adjust this value to control the speed
+    #linear_velocity = 0.5  # Adjust this value to control the speed
 
     # Set the angular velocity (for turning)
-    angular_velocity = 0.0  # You can adjust this value if needed
+    #angular_velocity = 0.0  # You can adjust this value if needed
 
     # Make Pepper move forward with the specified velocity
-    motion.moveToward(linear_velocity, 0.0, angular_velocity)
+    motion.moveToward(x, y, z)
 
     # Let Pepper move forward for a few seconds (adjust as needed)
     time.sleep(5)
