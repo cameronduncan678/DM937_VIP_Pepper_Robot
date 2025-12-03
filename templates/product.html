@@ -13,13 +13,17 @@
 
         <h1>Hi {{ name }}, what are you looking for?</h1>
 
-        <form action="/product" method="post" id="product-form">
-            <label for="product">Enter a grocery product:</label>
-            <input type="text" id="product" name="product" 
-                   placeholder="e.g., bread, rice, cereal, apples..." required>
+    <form action="/product" method="post" id="product-form">
+        <label for="product">Enter a grocery product:</label>
+        <input type="text" id="product" name="product"
+           placeholder="e.g., bread, rice, cereal..." required>
 
-            <button type="submit">Search</button>
-        </form>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if result %}
+        <h2>{{ result }}</h2>
+    {% endif %}
 
     </div>
 </body>
