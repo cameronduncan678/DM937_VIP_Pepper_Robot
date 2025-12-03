@@ -57,7 +57,7 @@ def create_app(config=None):
             coords = search_product_by_name(product_name, app.config['CSV_FILE'])
 
             if coords:
-                result = f"Product found! Coordinates: {coords}"
+                result = f"Product found! Please follow Pepper Robot. (Coordinates: {coords})"
             else:
                 result = f"Sorry, '{product_name}' was not found."
 
