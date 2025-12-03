@@ -1,14 +1,6 @@
-from flask import Flask, render_template, jsonify, abort, request, redirect
-import json, os
+from flask import Flask, render_template, request, redirect
+import os, csv, ast
 from werkzeug.middleware.proxy_fix import ProxyFix
-
-# ---------------------------------------------------------
-# Allow importing helpers.py from the parent folder
-# ---------------------------------------------------------
-import sys
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from helper import search_product_by_name   # <-- uses CSV lookup
 
 
 def create_app(config=None):
@@ -20,12 +12,26 @@ def create_app(config=None):
     # -----------------------------------------------------
     app.config.from_mapping(
         SECRET_KEY=os.environ.get('SECRET_KEY', 'dev-key'),
-        PRODUCTS_FILE=os.path.join(app.root_path, 'data_products.json'),
         CSV_FILE=os.path.join(app.root_path, 'database/products.csv')
     )
 
     if config:
         app.config.update(config)
+
+    # -----------------------------------------------------
+    # SEARCH DATABASE FOR PRODUCT (RETURN CORDS)
+    # -----------------------------------------------------
+    
+    def search_product_by_name(product_name, csv_file="database/products.csv"):
+        with open(csv_file, newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row["Name"].lower() == product_name.lower():
+                    Xcoord = ast.literal_eval(row["X"])
+                    Ycord = ast.literal_eval(row["Y"])
+                    Zcord = ast.literal_eval(row["Z"])
+                    return Xcoord, Ycord, Zcord
+        return None
 
     # -----------------------------------------------------
     # ROUTES
@@ -34,7 +40,6 @@ def create_app(config=None):
     @app.route('/')
     def index():
         return render_template('index.html')
-
 
     @app.route('/product', methods=['GET', 'POST'])
     def product_page():
@@ -78,44 +83,6 @@ def create_app(config=None):
 
         return redirect("/product")
 
-
-    # -----------------------------------------------------
-    # API – return entire JSON product file
-    # -----------------------------------------------------
-    @app.route('/api/products', methods=['GET'])
-    def api_products():
-        try:
-            with open(app.config['PRODUCTS_FILE'], 'r', encoding='utf-8') as fh:
-                data = json.load(fh)
-        except FileNotFoundError:
-            data = []
-        return jsonify({"products": data})
-
-
-    # -----------------------------------------------------
-    # API – get JSON product by ID
-    # -----------------------------------------------------
-    @app.route('/api/products/<int:product_id>', methods=['GET'])
-    def api_product_detail(product_id):
-        try:
-            with open(app.config['PRODUCTS_FILE'], 'r', encoding='utf-8') as fh:
-                data = json.load(fh)
-        except FileNotFoundError:
-            abort(404)
-
-        for p in data:
-            if p.get('id') == product_id:
-                return jsonify(p)
-
-        abort(404)
-
-
-    # -----------------------------------------------------
-    # Error Handler
-    # -----------------------------------------------------
-    @app.errorhandler(404)
-    def not_found(e):
-        return jsonify({"error": "not found"}), 404
 
     return app
 

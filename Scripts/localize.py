@@ -38,10 +38,6 @@ def main(session, exploration_file):
     navigation_service.startLocalization()
 
     # Navigate to another place in the map
-    # from helper import search_product_by_name
-    # coords = search_product_by_name("Bread")
-    # navigation_service.navigateToInMap(coords)
-
     navigation_service.navigateToInMap([-2., 0., 0.])
 
     # Check where the robot arrived
