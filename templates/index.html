@@ -4,37 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pepper Robot Interface</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-    <img src="static/images/logo.png" class="logo" alt="Logo">
-    <div class="container">
-        <h1>Pepper Web Interface</h1>
+    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="Logo">
 
-        <form action="/product" method="GET" id="user-form">
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p style="margin-bottom: 30px; color: #555;">Please tell us your name and any allergies.</p>
+
+        <form action="{{ url_for('product_page') }}" method="GET" id="user-form">
 
             <label for="name">Enter your name:</label>
             <input type="text" id="name" name="name" placeholder="Your name..." required>
 
             <label for="allergy">Select an allergy:</label>
             <select id="allergy" name="allergy">
-                <option value="" disabled selected>Select an allergy</option>
-                <option>None</option>
-                <option>Milk (Dairy)</option>
-                <option>Eggs</option>
-                <option>Peanuts</option>
-                <option>Tree Nuts</option>
-                <option>Soy</option>
-                <option>Wheat</option>
-                <option>Fish</option>
-                <option>Shellfish</option>
-                <option>Sesame</option>
-                <option>Mustard</option>
-                <option>Celery</option>
-                <option>Lupin</option>
-                <option>Sulfites</option>
-                <option>Corn</option>
+                <option value="None" selected>None</option>
+                <option value="Milk (Dairy)">Milk (Dairy)</option>
+                <option value="Eggs">Eggs</option>
+                <option value="Peanuts">Peanuts</option>
+                <option value="Tree Nuts">Tree Nuts</option>
+                <option value="Soy">Soy</option>
+                <option value="Wheat">Wheat</option>
+                <option value="Fish">Fish</option>
+                <option value="Shellfish">Shellfish</option>
+                <option value="Sesame">Sesame</option>
             </select>
 
             <button type="submit">Continue</button>
