@@ -2,40 +2,42 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #dbe8e8, #f2f8f8); /* light teal-tinted background */
-    color: #333;
+    /* This background is the source of the teal-tinted gradient */
+    background: linear-gradient(135deg, #dbe8e8, #f2f8f8);
+    color: #333; /* Default text color is dark */
 }
 
-/* Frosted glass container */
+/* --- Frosted Glass Container (Applied to all main content) --- */
 .container {
     width: 90%;
     max-width: 460px;
     padding: 35px 28px;
 
+    /* Frosted Glass Effect */
     background: rgba(255, 255, 255, 0.25);
     border-radius: 22px;
-
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
+    /* Soft border and shadow */
     border: 1px solid rgba(255, 255, 255, 0.45);
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
 
     text-align: center;
 }
 
+/* --- Headings (Themed Color) --- */
 h1 {
     font-size: 26px;
     margin-bottom: 25px;
-    color: #197278; /* NEW THEME COLOR */
+    color: #197278; /* Primary Teal/Theme Color */
 }
 
+/* --- Form and Input Styles --- */
 form {
     display: flex;
     flex-direction: column;
@@ -46,49 +48,77 @@ label {
     text-align: left;
     font-weight: bold;
     font-size: 16px;
-    color: #197278; /* NEW THEME COLOR */
+    color: #197278; /* Primary Teal/Theme Color */
 }
 
 input, select {
     width: 100%;
     box-sizing: border-box;
-
     padding: 14px;
     font-size: 17px;
-
     border-radius: 12px;
     border: 1px solid rgba(0,0,0,0.2);
-
     background: rgba(255, 255, 255, 0.7);
 }
 
+/* --- Button Styling (Primary Action) --- */
 button {
     margin-top: 12px;
     padding: 14px;
-
     font-size: 18px;
     font-weight: bold;
-
-    background: #197278; /* NEW THEME COLOR */
+    background: #197278; /* Primary Teal/Theme Color */
     color: white;
-
     border: none;
     border-radius: 12px;
-
     cursor: pointer;
     transition: 0.25s;
+    box-shadow: 0 4px 10px rgba(25, 114, 120, 0.3);
 }
 
 button:hover {
     background: #12595c; /* Slightly darker teal */
 }
 
+/* --- Logo Positioning and Styling --- */
 .logo {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 90px;      /* adjust size as needed */
+    width: 90px;
     height: auto;
     opacity: 0.9;
+    z-index: 1000;
 }
 
+/* --- Scanning Page & Result Styles --- */
+
+/* NEW: General paragraph style to ensure status text uses the dark body color */
+.container > p {
+    color: #333;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Style for the image in the scanning status page */
+.container img {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.2);
+    margin-top: 10px;
+}
+
+/* Style for the result text when a search or scan is successful/failed */
+/* This rule is highly specific and should only apply to the result box */
+.container p { /* Targeting all paragraph children inside the container */
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+    background-color: #f0f7f8;
+    border: 1px solid #197278;
+    color: #197278; /* Teal text for the result message */
+    line-height: 1.4;
+}
