@@ -2,11 +2,12 @@ import qi
 import argparse
 import sys
 
-from arm_move import move_left_arm_with_fist
+from arm_point import point_arm
+from move_location import move_location
 
 def main(session):
-
-    move_left_arm_with_fist()
+    move_location()
+    point_arm()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
