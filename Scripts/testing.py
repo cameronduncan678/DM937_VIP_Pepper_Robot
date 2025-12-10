@@ -1,26 +1,12 @@
-#! /usr/bin/env python
-# -*- encoding: UTF-8 -*-
-
-"""Example: Use Dictionary TTS Methods (English)"""
-
 import qi
 import argparse
 import sys
 
+from arm_move import move_left_arm_with_fist
 
 def main(session):
-    """
-    This example uses the Dictionary TTS methods (English).
-    It adds and removes words in the dictionary from the module.
-    """
-    # Get the service ALTextToSpeech.
 
-    tts = session.service("ALTextToSpeech")  
-
-    tts.setLanguage("English") #setting language
-
-    tts.say("Testing.")
-
+    move_left_arm_with_fist()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

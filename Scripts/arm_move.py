@@ -1,15 +1,6 @@
 from naoqi import ALProxy
 import time
 
-PEPPER_IP = "10.1.32.138"
-PORT = 9559
-
-motion = ALProxy("ALMotion", PEPPER_IP, PORT)
-tts = ALProxy("ALTextToSpeech", PEPPER_IP, PORT)
-asr = ALProxy("ALSpeechRecognition", PEPPER_IP, PORT)
-memory = ALProxy("ALMemory", PEPPER_IP, PORT)
-
-motion.wakeUp()
 
 def move_left_arm_with_fist(
     roll_up=1.0,
@@ -18,6 +9,17 @@ def move_left_arm_with_fist(
     speed=0.1,
     pause=1.0
 ):
+    
+    PEPPER_IP = "10.1.32.138"
+    PORT = 9559
+    
+    motion = ALProxy("ALMotion", PEPPER_IP, PORT)
+    tts = ALProxy("ALTextToSpeech", PEPPER_IP, PORT)
+    asr = ALProxy("ALSpeechRecognition", PEPPER_IP, PORT)
+    memory = ALProxy("ALMemory", PEPPER_IP, PORT)
+
+    motion.wakeUp()
+
     roll_joint = "LShoulderRoll"
     pitch_joint = "LShoulderPitch"
     hand_joint = "LHand"
