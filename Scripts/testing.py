@@ -8,9 +8,6 @@ from say_hi import say_hi
 from say_product_confirm import say_product_confirm
 
 def main(session):
-    motion_service=session.service("ALMotion")
-    motion_service.setOrthogonalSecurityDistance(0.005)
-    motion_service.setTangentialSecurityDistance(0.005)
     say_hi(session)
     move_location()
     point_arm()
