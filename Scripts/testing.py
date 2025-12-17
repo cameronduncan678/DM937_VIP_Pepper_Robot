@@ -10,8 +10,9 @@ from say_product_confirm import say_product_confirm
 def main(session):
     say_hi(session)
     move_location()
-    point_arm()
     say_product_confirm(session)
+    point_arm()
+   
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
