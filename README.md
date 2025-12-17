@@ -12,13 +12,13 @@
 
 ## Overview
 
-This project creates a lightweight website that Pepper can display on its tablet screen. It allows real-time communication between the robot and an external ESP32 camera, enabling visual interaction and control.
+This project creates a lightweight website that can be displayed on any device, such as Pepper's tablet screen. It allows real-time communication between the robot and an external ESP32 camera, enabling visual interaction and control.
 
 **Tech Stack:**
 - **Frontend:** HTML, CSS  
 - **Backend:** Python (Flask)  
 - **Hardware Input:** ESP32-CAM (streaming camera feed)  
-- **Display Device:** LG CNS Tablet on Pepper Robot
+- **Display Device:** Phone, iPad, Laptop etc 
 
 ---
 
