@@ -13,26 +13,34 @@
 
         <h1>Hi {{ name }}, what are you looking for?</h1>
 
-        <!-- manual product search -->
+        {% if result %}
+            <div style="
+                font-size: 2em; /* Make text as large as H1 */
+                font-weight: bold;
+                margin: 30px 0; /* Position where scan button was */
+                padding: 15px;
+                border-radius: 8px;
+                text-align: center;
+                /* Conditional styling based on safety message */
+                color: {{ '#197278' if 'SAFE TO CONSUME' in result else '#d9534f' }};
+                background-color: {{ 'rgba(25, 114, 120, 0.1)' if 'SAFE TO CONSUME' in result else 'rgba(217, 83, 79, 0.1)' }};
+                border: 2px solid {{ '#197278' if 'SAFE TO CONSUME' in result else '#d9534f' }};
+            ">
+                {{ result | safe }}
+            </div>
+        {% endif %}
+
         <form action="/product" method="post" id="product-form">
+
+            <input type="hidden" name="name" value="{{ name }}">
+            <input type="hidden" name="allergy" value="{{ allergy }}">
+
             <label for="product">Enter a grocery product:</label>
             <input type="text" id="product" name="product"
                 placeholder="e.g., bread, rice, cereal..." required>
 
             <button type="submit">Search</button>
         </form>
-
-        <!-- barcode scan -->
-        <br>
-        <br>
-        <form action="/scan" method="post">
-            <label>Scan barcode instead:</label>
-            <button type="submit">Scan</button>
-        </form>
-
-        {% if result %}
-            <p>{{ result }}</p>
-        {% endif %}
 
     </div>
 </body>
