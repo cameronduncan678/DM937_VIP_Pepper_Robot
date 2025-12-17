@@ -28,7 +28,7 @@ def main(session):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", type=str, default="10.1.32.68",
+    parser.add_argument("--ip", type=str, default="10.1.32.138",
                         help="Robot IP address. On robot or Local Naoqi: use '10.1.32.68'.")
     parser.add_argument("--port", type=int, default=9559,
                         help="Naoqi port number")

@@ -4,10 +4,14 @@ import sys
 
 from arm_point import point_arm
 from move_location import move_location
+from say_hi import say_hi
+from say_product_confirm import say_product_confirm
 
 def main(session):
+    say_hi(session)
     move_location()
     point_arm()
+    say_product_confirm(session)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
