@@ -259,7 +259,7 @@ def create_app(config=None):
     def product_page():
         """
         Handles user entry.
-        On POST: Executes Pepper motion sequence (non-blocking), waits 18 seconds, then redirects to start scanning.
+        On POST: Executes Pepper motion sequence (non-blocking), waits 20 seconds, then redirects to start scanning.
         """
 
         user_name = request.values.get("name", "there")
@@ -278,12 +278,12 @@ def create_app(config=None):
             action_result = ""
             if pepper_success:
                 # Script thread launched successfully.
-                action_result = f"✅ Pepper action sequence initiated. **Waiting 18 seconds for Pepper to move** before starting barcode scan for product: **{product_name}**."
+                action_result = f"✅ Pepper action sequence initiated. **Waiting 20 seconds for Pepper to move** before starting barcode scan for product: **{product_name}**."
 
                 # --- STAGE 1B: ARTIFICIAL DELAY (BLOCKING) ---
-                print("Starting 18-second artificial delay (concurrent with Pepper movement)...")
-                time.sleep(18)  # *** 18-SECOND DELAY STARTS AFTER LAUNCH ***
-                print("18-second delay finished. Redirecting to scanning.")
+                print("Starting 20-second artificial delay (concurrent with Pepper movement)...")
+                time.sleep(20)  # *** 1- DELAY STARTS AFTER LAUNCH ***
+                print("20-second delay finished. Redirecting to scanning.")
                 action_result = f"✅ Now starting barcode scan for product: **{product_name}**."
 
             else:
